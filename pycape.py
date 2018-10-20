@@ -122,10 +122,13 @@ class Pycape:
         imageFile = 'YOLO/frames/' + str(self.currentFrame) + '.' + self.fileExt
 
         # x1 y1 x2 y2 positions of each player passed to openPose
-        playerPositionFile = os.getcwd() + '/playerPositions/frame' + str(self.currentFrame) + 'players.txt'
+        playerPositionFile = 'frame' + str(self.currentFrame) + 'players.txt'
         
         img = mpimg.imread(imageFile)
-        fp = open(playerPositionFile, "r")
+        os.getcwd()
+
+        fp = open(os.path.normpath(os.getcwd() + os.sep + os.pardir + '/pycape/playerPositions/') + os.sep + playerPositionFile, "r")
+        os.chdir('../')
         #plt.imshow(img)
         plt.show()
         try:
@@ -139,7 +142,7 @@ class Pycape:
                 # for each player, open its keypoints file.
                 openposeDets = 'cropOutJSON/frame' + str(self.currentFrame) + 'player' + str(cnt) + '_keypoints.json'
                 # read data in from posefile.
-                with open(openposeDets, "r") as read_file:
+                with open(os.path.normpath(os.getcwd() + os.sep + '/pycape/') + os.sep + openposeDets, "r") as read_file:
                     data = json.load(read_file)
                 # Parse through keypoint file to gather xy info for each limb. 
                 #print data
@@ -181,7 +184,7 @@ class Pycape:
                 cnt += 1
         finally:
             fp.close()
-            print 'closed player position file.'
+            print 'closed image field.'
         plt.imshow(img)
         plt.show()
 
