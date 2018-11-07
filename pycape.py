@@ -124,15 +124,6 @@ class Pycape:
         imageFile = 'YOLO/frames/' + str(self.currentFrame) + '.' + self.fileExt
 
         # x1 y1 x2 y2 positions of each player passed to openPose
-<<<<<<< HEAD
-        playerPositionFile = '/playerPositions/frame' + str(self.currentFrame) + 'players.txt'
-        
-        # img = mpimg.imread(imageFile)
-        fp = open(os.getcwd() + playerPositionFile, "r")
-
-        outFile = 'frame' + str(self.currentFrame) + 'keypoints.json'
-        outData = []
-=======
         playerPositionFile = 'frame' + str(self.currentFrame) + 'players.txt'
         
         img = mpimg.imread(imageFile)
@@ -142,7 +133,6 @@ class Pycape:
         os.chdir('../')
         #plt.imshow(img)
         plt.show()
->>>>>>> a4b89ced60a14213f8e1ec19ce599f52abc14b54
         try:
             # read each player position line.
             line = fp.readline()
@@ -279,22 +269,9 @@ class Pycape:
                 cnt += 1
         finally:
             fp.close()
-<<<<<<< HEAD
-            print 'closed player position file.'
-        
-        # plt.imshow(img)
-        # plt.show()
-
-        os.chdir('OutputFrames')
-        filename = str(self.currentFrame) + '.jpg'
-        plt.savefig(filename, format='jpg', dpi=1200)
-        os.chdir('../')
-        plt.close()
-=======
             print 'closed image field.'
         plt.imshow(img)
         plt.show()
->>>>>>> a4b89ced60a14213f8e1ec19ce599f52abc14b54
 
     def plotPlayers(self):
         # Currently this method is written to open the individually cropped images of openpose and plot the annotated points.
