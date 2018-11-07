@@ -23,10 +23,10 @@ Each of the detection files as mentioned above should follow this format:
 
   object confidence x1 y1 x2 y2
 
-Example:
-person .98 1343 600 1367 640 
-person .68 568 230 597 250
-person .50 229 450 250 486
+Example:  
+person .98 1343 600 1367 640  
+person .68 568 230 597 250  
+person .50 229 450 250 486  
 
 Because we limited the output of our YOLO code to only "person"'s detected, we didn't worry about other objects.
 
@@ -94,5 +94,27 @@ Variables included in this class are hardcoded to have paths but can be modified
 This method is used when the command line argument *--mode crop* is passed.
 The purpose of this method is to crop subimages of the original image based off of the YOLO detections.
 
-### exportPlayerAnnotations
+### exportPlayerAnnotations()
+This method is used to export the individual player keypoints into a single file per frame.
+It input the seperate OpenPose keypoint files as frame{x}player{y}_keypoints.json to frame{x}keypoints.json
+where x is a frame number and y is a player number.
 
+### plotPlayersToOriginal()
+This method is used for debugging. It was written to plot all the keypoints detected from OpenPose using matplotlib.
+It also currently saves the plots, but isn't very useful since the saved images are scaled down and include the axes.
+
+### plotPlayers()
+Predecessor function to plotPlayersToOriginal(). It was also written for debug, but plots each player to the cropped image that was sent to OpenPose.
+
+## Command line Arguments
+    parser.add_argument('-f', '--framePath', required=True)
+    parser.add_argument('-d', '--detectionPath', required=True)
+    parser.add_argument('-n', '--numFrames', required=True)
+    parser.add_argument('-e', '--ext', required=True)
+    parser.add_argument('-m', '--mode', required=True)
+    
+--framePath: path for the YOLO frame locations
+--detectionPAth: path for the YOLO frame detections
+--numFrames: number of frames to run though
+--ext: image file extension
+--mode: mode to run. either export or crop.
