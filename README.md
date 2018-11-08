@@ -113,8 +113,9 @@ Predecessor function to plotPlayersToOriginal(). It was also written for debug, 
     parser.add_argument('-e', '--ext', required=True)
     parser.add_argument('-m', '--mode', required=True)
     
---framePath: path for the YOLO frame locations
---detectionPAth: path for the YOLO frame detections
---numFrames: number of frames to run though
---ext: image file extension
---mode: mode to run. either export or crop.
+--framePath: path for the YOLO frame locations  
+--detectionPAth: path for the YOLO frame detections  
+--numFrames: number of frames to run though  
+--ext: image file extension  
+--mode: mode to run. either export or crop  
+
